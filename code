@@ -1,0 +1,265 @@
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+const int button1 = 8;
+const int button2 = 9;
+const int button3 = 10;
+
+int buttonState1 = 0;
+int buttonState2 = 0;
+int buttonState3 = 0;
+
+String currentMessage = "";
+
+void setup() {
+  configure1();
+
+  // Initial Message - messages that will only be played when the device starts
+
+  // Message 1
+  // set cursor on the first line
+  lcd.setCursor(0, 0);
+  // messages can only be 16 characters
+  currentMessage = "hello :)";
+  // print the message
+  print();
+  // set cursor on the second line
+  lcd.setCursor(0, 1);
+  currentMessage = "Stine";
+  print();
+  delay(1000);  // duration of message on screen
+  lcd.clear();  // clear the message on screen
+
+  // // Message 2
+  // lcd.setCursor(0, 0);
+  // currentMessage = "Happy New Year!";
+  // print();
+  // lcd.setCursor(0, 1);
+  // currentMessage = "How are you?";
+  // print();
+  // lcd.clear();
+
+  // // Message 3
+  // lcd.setCursor(0, 0);
+  // currentMessage = "this is my";
+  // print();
+  // lcd.setCursor(0, 1);
+  // currentMessage = "prototype";
+  // print();
+  // lcd.clear();
+
+  // // copy the message code above to add more initial messages
+}
+
+void loop() {
+configure2();
+
+  // playing messages based on button pressing
+  if (buttonState1 == LOW) {
+  // when the first button is off
+  if (buttonState2 == LOW) {
+    // and the second button is off
+    if (buttonState3 == LOW) {
+      // and the third button is off
+
+      // default message
+      currentMessage = "press buttons to";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "view messages";
+      print();
+      lcd.clear();
+      return;  // returning to a blank satate before buttons are pressed
+    }
+    if (buttonState3 == HIGH) {
+      // and the third button is on
+
+      //first message
+      //first line
+      lcd.setCursor(0, 0);
+      currentMessage = "This is the";
+      print();
+      //second line
+      lcd.setCursor(0, 1);
+      currentMessage = "first message";
+      print();
+      lcd.clear();
+      //third line
+      lcd.setCursor(0, 0);
+      currentMessage = "here is more";
+      print();
+      //fourth line
+      lcd.setCursor(0, 1);
+      currentMessage = "thats it :)";
+      print();
+      return;
+    }
+  }
+
+  if (buttonState2 == HIGH) {
+    // and the second button is on
+    if (buttonState3 == LOW) {
+      //and the third utton is off
+
+      //second message
+      lcd.setCursor(0, 0);
+      currentMessage = "This is the";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "second message";
+      print();
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      currentMessage = "here is more";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "thats it :)";
+      print();
+      return;
+    }
+    if (buttonState3 == HIGH) {
+      //and the third utton is on
+
+      //third message
+      lcd.setCursor(0, 0);
+      currentMessage = "This is the";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "third message";
+      print();
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      currentMessage = "here is more";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "thats it :)";
+      print();
+      return;
+    }
+  }
+}
+
+if (buttonState1 == HIGH) {
+  //when the first button is on
+  if (buttonState2 == LOW) {
+    //and the second button is off
+    if (buttonState3 == LOW) {
+      //and the third button is off
+
+      //fourth message
+      lcd.setCursor(0, 0);
+      currentMessage = "This is the";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "fourth message";
+      print();
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      currentMessage = "here is more";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "thats it :)";
+      print();
+      return;
+    }
+    if (buttonState3 == HIGH) {
+      //and the third button is on
+
+      //fifth message
+      lcd.setCursor(0, 0);
+      currentMessage = "This is the";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "fifth message";
+      print();
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      currentMessage = "here is more";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "thats it :)";
+      print();
+      return;
+    }
+  }
+
+  if (buttonState2 == HIGH) {
+    //and the second button is on
+    if (buttonState3 == LOW) {
+      //and the third button is off
+      //sixth message
+      lcd.setCursor(0, 0);
+      currentMessage = "This is the";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "sixth message";
+      print();
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      currentMessage = "here is more";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "thats it :)";
+      print();
+      return;
+    }
+    if (buttonState3 == HIGH) {
+      //and the third button is on
+
+      //seventh message
+      lcd.setCursor(0, 0);
+      currentMessage = "This is the";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "seventh message";
+      print();
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      currentMessage = "here is more";
+      print();
+      lcd.setCursor(0, 1);
+      currentMessage = "thats it :)";
+      print();
+      return;
+    }
+  }
+}
+}
+
+
+void configure1() {
+  // Print a message to the LCD.
+  Serial.begin(9600);
+  // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+  lcd.init();
+  lcd.clear();
+  lcd.backlight();
+  // set up the buttons
+  pinMode(button1, INPUT);
+  pinMode(button2, INPUT);
+  pinMode(button3, INPUT);
+}
+
+void configure2() {
+  // set the cursor to column 0, line 1
+  // (note: line 1 is the second row, since counting begins with 0):
+  lcd.setCursor(0, 0);
+  // print the number of seconds since reset:
+  //lcd.print(millis() / 1000);
+
+  buttonState1 = digitalRead(button1);
+  Serial.println(buttonState1);
+  buttonState2 = digitalRead(button2);
+  Serial.println(buttonState2);
+  buttonState3 = digitalRead(button3);
+  Serial.println(buttonState3);
+}
+
+void print() {
+  for (char& c : currentMessage) {
+    lcd.print(c);
+    delay(200);
+  }
+}
