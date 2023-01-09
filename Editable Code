@@ -31,25 +31,25 @@ void setup() {
   delay(1000);  // duration of message on screen
   lcd.clear();  // clear the message on screen
 
-  // // Message 2
-  // lcd.setCursor(0, 0);
-  // currentMessage = "Happy New Year!";
-  // print();
-  // lcd.setCursor(0, 1);
-  // currentMessage = "How are you?";
-  // print();
-  // lcd.clear();
+  // Message 2
+  lcd.setCursor(0, 0);
+  currentMessage = "Happy New Year!";
+  print();
+  lcd.setCursor(0, 1);
+  currentMessage = "How are you?";
+  print();
+  lcd.clear();
 
-  // // Message 3
-  // lcd.setCursor(0, 0);
-  // currentMessage = "this is my";
-  // print();
-  // lcd.setCursor(0, 1);
-  // currentMessage = "prototype";
-  // print();
-  // lcd.clear();
+  // Message 3
+  lcd.setCursor(0, 0);
+  currentMessage = "this is my";
+  print();
+  lcd.setCursor(0, 1);
+  currentMessage = "prototype";
+  print();
+  lcd.clear();
 
-  // // copy the message code above to add more initial messages
+  // copy the message code above to add more initial messages
 }
 
 void loop() {
